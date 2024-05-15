@@ -4,10 +4,10 @@
        
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Track your income sources!</h1>
+    <h1 class="text-center mb-4">Track your Expenses here.</h1>
     <div class="row mb-3">
         <div class="col-12 col-md-6">
-            <button class="btn btn-primary w-30" data-bs-toggle="modal" data-bs-target="#addIncomeModal">Add Income Source</button>
+            <button class="btn btn-primary w-30" data-bs-toggle="modal" data-bs-target="#addExpenseModal">Add Expense</button>
         </div>
     </div>
     <div class="row">
@@ -18,8 +18,8 @@
                         <tr>
                             <th scope="col">Select</th>
                             <th scope="col">ID</th>
-                            <th scope="col">Income Source</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Expense Description</th>
+                            <th scope="col">Amount</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -27,8 +27,8 @@
                         <tr>
                             <td><input type="checkbox"></td>
                             <td>1</td>
-                            <td>Income Source 1</td>
-                            <td>$1000</td>
+                            <td>Expense 1</td>
+                            <td>$50</td>
                             <td>
                                 <button class="btn btn-sm btn-warning">Edit</button>
                                 <button class="btn btn-sm btn-danger">Delete</button>
@@ -37,8 +37,8 @@
                         <tr>
                             <td><input type="checkbox"></td>
                             <td>2</td>
-                            <td>Income Source 2</td>
-                            <td>$100</td>
+                            <td>Expense 2</td>
+                            <td>$75</td>
                             <td>
                                 <button class="btn btn-sm btn-warning">Edit</button>
                                 <button class="btn btn-sm btn-danger">Delete</button>
@@ -50,30 +50,3 @@
         </div>
     </div>
 </div>
-
-
-
-    <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="addIncomeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addIncomeModalLabel">Add Income Source</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="incomeSource" class="form-label">Income Source</label>
-                        <input type="text" class="form-control" id="incomeSource">
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="price">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
-

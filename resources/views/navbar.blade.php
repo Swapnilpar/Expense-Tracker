@@ -16,7 +16,10 @@
                 <a class="nav-link ps-3" href="income">Income Tracker</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link ps-3" href="#">Expense Tracker</a>
+                <a class="nav-link ps-3" href="expense">Expense Tracker</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link ps-3" href="expense"></a>
                 </li>
             </ul>
             <form class="d-flex">

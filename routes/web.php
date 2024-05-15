@@ -20,6 +20,6 @@ Route::get('/income', function () {
     return view('income');
 });
 
-Route::get('/navbar', function () {
-    return view('navbar');
+Route::get('/expense', function () {
+    return view('expense');
 });
