@@ -30,4 +30,5 @@ Route::get('/expense/{id}', [ExpenseController::class, 'delExpRecord']);
 
 Route::get('/income',[IncomeController::class, 'index']);
 Route::post('/income',[IncomeController::class, 'IncData']);
-Route::get('/income', 'IncomeController@showincRecord');
+Route::get('/income', [IncomeController::class, 'showincRecord']);
+Route::get('/income/{id}', [IncomeController::class, 'delIncRecord']);

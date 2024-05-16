@@ -50,8 +50,8 @@
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->date }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                    <a class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="/income/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
