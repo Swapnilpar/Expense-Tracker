@@ -22,9 +22,9 @@
                 <a class="nav-link ps-3" href="expense"></a>
                 </li>
             </ul>
-            <form class="d-flex">
+            {{-- <form class="d-flex">
                 <button class="btn btn-danger" type="submit">Logout</button>
-            </form>
+            </form> --}}
             </div>
             </div>
     </nav>

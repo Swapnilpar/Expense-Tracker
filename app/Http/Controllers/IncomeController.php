@@ -35,5 +35,9 @@ class IncomeController extends Controller
         else{
             return back()->with('error', 'Something went wrong!');
         }
+
+        
     }
+
+    
 }

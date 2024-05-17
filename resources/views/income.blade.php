@@ -7,6 +7,37 @@
 
 <body class="income-body">
 
+
+    <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="addIncomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addIncomeModalLabel">Add Income Source</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="incomeSource" class="form-label">Income Source</label>
+                            <input type="text" name="description" class="form-control" id="incomeSource" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Enter Price in Rupees</label>
+                            <input type="number" name="price" class="form-control" id="price" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Enter Date</label>
+                            <input type="date" name="date" class="form-control" id="date" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="add">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-5">
         <h1 class="text-center mb-4">Track your income sources!</h1>
         @if (Session::get('success'))
@@ -27,6 +58,16 @@
                     Source</button>
             </div>
         </div>
+
+{{-- 
+        <div class="col-12 col-md-6 mb-3">
+            <div class="input-group">
+                <input type="date" class="form-control" id="startDate" name="startDate" placeholder="Start Date">
+                <input type="date" class="form-control" id="endDate" name="endDate" placeholder="End Date">
+                <button class="btn btn-primary" id="searchBtn" type="submit">Search</button>
+            </div>
+        </div> --}}
+
 
         <div class="row">
             <div class="col">
@@ -67,35 +108,8 @@
         </div>
     </div>
 
+    
 
 
-    <div class="modal fade" id="addIncomeModal" tabindex="-1" aria-labelledby="addIncomeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addIncomeModalLabel">Add Income Source</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="incomeSource" class="form-label">Income Source</label>
-                            <input type="text" name="description" class="form-control" id="incomeSource" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="price" class="form-label">Enter Price in Rupees</label>
-                            <input type="number" name="price" class="form-control" id="price" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="date" class="form-label">Enter Date</label>
-                            <input type="date" name="date" class="form-control" id="date" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="add">Add</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>

@@ -44,25 +44,25 @@
                     </thead>
                     <tbody id="expenseTableBody">
                         @isset($expdata)
-                            @foreach($expdata as $item)
+                            @foreach ($expdata as $item)
                                 <tr>
-                                    {{-- <td><input type="checkbox"></td> --}}
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->description }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->date }}</td>
                                     <td>
                                         <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                        <a href="/expense/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+                                        <a href="/expense/{{ $item->id }}" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
-                            @else
+                        @else
                             <tr>
                                 <td colspan="6">No data available</td>
-                            </tr> 
-                                        
-                            @endisset
+                            </tr>
+
+                        @endisset
                     </tbody>
                 </table>
             </div>

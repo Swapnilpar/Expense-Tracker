@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,8 @@ use App\Http\Controllers\IncomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [DashboardController::class, 'index']);
+// Route::get('/visual', [DashboardController::class, 'Ratio']);
 
 
 Route::get('/expense',[ExpenseController::class, 'index']);
@@ -27,8 +27,8 @@ Route::get('/expense', [ExpenseController::class, 'showexpRecord']);
 Route::get('/expense/{id}', [ExpenseController::class, 'delExpRecord']);
 
 
-
 Route::get('/income',[IncomeController::class, 'index']);
 Route::post('/income',[IncomeController::class, 'IncData']);
 Route::get('/income', [IncomeController::class, 'showincRecord']);
 Route::get('/income/{id}', [IncomeController::class, 'delIncRecord']);
+Route::post('/income/filter', [IncomeController::class, 'filterByDate']);
