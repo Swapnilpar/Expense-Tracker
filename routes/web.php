@@ -17,6 +17,7 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+
 Route::get('/', [DashboardController::class, 'index']);
 // Route::get('/visual', [DashboardController::class, 'Ratio']);
 
@@ -25,10 +26,13 @@ Route::get('/expense',[ExpenseController::class, 'index']);
 Route::post('/expense',[ExpenseController::class, 'ExpData']);
 Route::get('/expense', [ExpenseController::class, 'showexpRecord']);
 Route::get('/expense/{id}', [ExpenseController::class, 'delExpRecord']);
+Route::put('/expense/update/{id}', [ExpenseController::class, 'ExpenseUpdate']);
+
 
 
 Route::get('/income',[IncomeController::class, 'index']);
 Route::post('/income',[IncomeController::class, 'IncData']);
 Route::get('/income', [IncomeController::class, 'showincRecord']);
 Route::get('/income/{id}', [IncomeController::class, 'delIncRecord']);
-Route::post('/income/filter', [IncomeController::class, 'filterByDate']);
+Route::put('/income/update/{id}', [IncomeController::class, 'IncomeUpdate']);
+// Route::post('/income/filter', [IncomeController::class, 'filterByDate']);

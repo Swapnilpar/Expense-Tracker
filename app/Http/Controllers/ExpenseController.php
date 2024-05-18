@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Redirect;
+
 // use App\exp_record;
 
 class ExpenseController extends Controller
@@ -23,6 +25,23 @@ class ExpenseController extends Controller
         DB::delete('delete from exp_record where id = ?', [$id]);
         return redirect('expense')->with('success', "Data Successfully Deleted");
     }
+
+   public function ExpenseUpdate(Request $request, $id) {
+        $query = DB::table('exp_record')
+            ->where('id', $id)
+            ->update([
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
+                'date' => $request->input('date')
+            ]);
+
+        if ($query) {
+            return Redirect::to('/expense')->with('success', 'Expense data updated successfully!');
+        } else {
+            return Redirect::back()->with('error', 'Failed to update expense data.');
+        }
+    }
+    
         
     public function ExpData(Request $request){
         // $request->validate([

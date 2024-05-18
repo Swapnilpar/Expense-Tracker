@@ -22,9 +22,6 @@
                 <a class="nav-link ps-3" href="expense"></a>
                 </li>
             </ul>
-            {{-- <form class="d-flex">
-                <button class="btn btn-danger" type="submit">Logout</button>
-            </form> --}}
             </div>
             </div>
     </nav>

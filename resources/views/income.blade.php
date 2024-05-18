@@ -79,7 +79,9 @@
                                 <th scope="col">Income Source</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Delete Data</th>
+                                <th scope="col">Update Data</th>
+
                             </tr>
                         </thead>
                         <tbody id="incomeTableBody">
@@ -91,9 +93,18 @@
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->date }}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-warning">Edit</a>
                                     <a href="/income/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
                                 </td>
+                                <td>
+                                <form action="/income/update/{{$item->id}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <input type="text" name="description" class="form-control" value="{{$item->description}}" required>
+                                    <input type="number" name="price" class="form-control mt-2" value="{{$item->price}}" required>
+                                    <input type="date" name="date" class="form-control mt-2" value="{{$item->date}}" required>
+                                    <button type="submit" class="btn btn-sm btn-primary mt-2">Update</button>
+                                </form>
+                            </td>
                             </tr>
                             @endforeach
                             @else
@@ -107,9 +118,4 @@
             </div>
         </div>
     </div>
-
-    
-
-
-
 </body>

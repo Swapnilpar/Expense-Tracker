@@ -55,6 +55,16 @@
                                         <a href="/expense/{{ $item->id }}" class="btn btn-sm btn-danger"
                                             onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
                                     </td>
+                                      <td>
+                                        <form action="/expense/update/{{$item->id}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="PUT">
+                                            <input type="text" name="description" class="form-control" value="{{$item->description}}" required>
+                                            <input type="number" name="price" class="form-control mt-2" value="{{$item->price}}" required>
+                                            <input type="date" name="date" class="form-control mt-2" value="{{$item->date}}" required>
+                                            <button type="submit" class="btn btn-sm btn-primary mt-2">Update</button>
+                                        </form>
+                                      </td>
                                 </tr>
                             @endforeach
                         @else
@@ -99,45 +109,3 @@
     </div>
 </div>
 
-{{-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const addExpenseForm = document.getElementById('addExpenseForm');
-        const expenseTableBody = document.getElementById('expenseTableBody');
-
-        addExpenseForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const expenseDescInput = document.getElementById('expenseDesc');
-            const priceInput = document.getElementById('expensePrice');
-            const dateInput = document.getElementById('expenseDate');
-
-            const expenseDesc = expenseDescInput.value;
-            const price = priceInput.value;
-            const date = dateInput.value;
-
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="checkbox"></td>
-                <td>${expenseTableBody.children.length + 1}</td>
-                <td>${expenseDesc}</td>
-                <td>${price}</td>
-                <td>${date}</td>
-                <td>
-                    <button class="btn btn-sm btn-warning">Edit</button>
-                    <button class="btn btn-sm btn-danger">Delete</button>
-                </td>
-            `;
-
-            expenseTableBody.appendChild(newRow);
-
-            // Reset form fields
-            expenseDescInput.value = '';
-            priceInput.value = '';
-            dateInput.value = '';
-
-            // Close the modal
-            const modal = new bootstrap.Modal(document.getElementById('addExpenseModal'));
-            modal.hide();
-        });
-    });
-</script> --}}

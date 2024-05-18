@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Redirect;
+
 
 class IncomeController extends Controller
 {
@@ -21,6 +23,22 @@ class IncomeController extends Controller
         return redirect('income')->with('success', "Data Successfully Deleted");
         
     }
+
+    public function IncomeUpdate(Request $request, $id) {
+        $query = DB::table('inc_record')
+            ->where('id', $id)
+            ->update([
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
+                'date' => $request->input('date')
+            ]);
+
+        if ($query) {
+            return Redirect::to('/income')->with('success', 'Income data updated successfully!');
+        } else {
+            return Redirect::back()->with('error', 'Failed to update income data.');
+        }
+    }
     
     public function IncData(Request $request){
           $query = DB::table('inc_record')->insert([
@@ -38,6 +56,9 @@ class IncomeController extends Controller
 
         
     }
+
+
+    
 
     
 }
