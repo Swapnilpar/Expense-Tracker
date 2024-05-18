@@ -1,10 +1,4 @@
 @include('navbar')
-{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-</script> --}}
-
 
 
 <div class="container mt-5">
@@ -51,7 +45,6 @@
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->date }}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-warning">Edit</a>
                                         <a href="/expense/{{ $item->id }}" class="btn btn-sm btn-danger"
                                             onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
                                     </td>

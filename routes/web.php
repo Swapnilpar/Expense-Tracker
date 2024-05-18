@@ -19,7 +19,10 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', [DashboardController::class, 'index']);
-// Route::get('/visual', [DashboardController::class, 'Ratio']);
+Route::get('/stats', [DashboardController::class, 'CategorizedData']);
+
+
+// Route::get('/visual', [DashboardController::class, 'CategorizedIncome']);
 
 
 Route::get('/expense',[ExpenseController::class, 'index']);

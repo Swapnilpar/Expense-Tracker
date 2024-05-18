@@ -8,15 +8,15 @@
     <title>Laravel</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet"> --}}
+
     @include('navbar')
 </head>
 
 <body>
-    <h1 class="text-center m-0 p-0">Income Overview</h1>
+    <h1 class="text-center mt-3 p-0">Income Overview</h1>
     <section class="dashboard-income p-3 d-flex justify-content-center flex-wrap">
 
         {{-- Todays Income --}}
@@ -80,7 +80,7 @@
         {{-- Yearly Income  --}}
         <div class="card mb-3 ms-2" style="max-width: 18rem;">
             <div class="card-body">
-                 <h6 class="card-title">Yearly Income: <h5 style="color: green">
+                <h6 class="card-title">Yearly Income: <h5 style="color: green">
                         {{ $yearlyIncome ? $yearlyIncome->sum('price') : '0.00' }} &#8377; </h5>
                 </h6>
                 <p>Details:</p>
@@ -105,13 +105,14 @@
         {{-- Todays Expense  --}}
         <div class="card mb-3" style="max-width: 18rem;">
             <div class="card-body">
-                 <h6 class="card-title">Today's Expense: <h5 style="color: rgb(198, 0, 0)">
+                <h6 class="card-title">Today's Expense: <h5 style="color: rgb(198, 0, 0)">
                         {{ $todaysExpense ? $todaysExpense->sum('price') : '0.00' }} &#8377; </h5>
                 </h6>
                 <p class="card-text">Details:</p>
                 <ul class="list-group">
                     @forelse($todaysExpense as $expense)
-                        <li class="list-group-item">{{ $expense->description }}: {{ number_format($expense->price, 2) }}
+                        <li class="list-group-item">{{ $expense->description }}:
+                            {{ number_format($expense->price, 2) }}
                             &#8377;</li>
                     @empty
                         <li class="list-group-item">No Expense for Today</li>
@@ -140,10 +141,10 @@
             </div>
         </div>
 
-{{-- Monthly Expense  --}}
+        {{-- Monthly Expense  --}}
         <div class="card mb-3 ms-2" style="max-width: 18rem;">
             <div class="card-body">
-               <h6 class="card-title">Last 30 Days Expense: <h5 style="color:rgb(198, 0, 0)">
+                <h6 class="card-title">Last 30 Days Expense: <h5 style="color:rgb(198, 0, 0)">
                         {{ $monthlyExpense ? $monthlyExpense->sum('price') : '0.00' }} &#8377; </h5>
                 </h6>
                 <p>Details:</p>
@@ -182,55 +183,55 @@
 
     {{-- Income and Expense Ratio  --}}
     <section class="container justify-content-center text-center mt-5" style="height: 70vh;">
-    <div class="row">
-        <div class="col">
-            <h1 class="mb-4">Income Expense Ratio</h1>
+        <div class="row">
+            <div class="col">
+                <h1 class="mb-4">Income Expense Ratio</h1>
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <canvas id="ratioChart"></canvas>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <canvas id="ratioChart"></canvas>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-
-   
     <script>
-    const income = {{$income_ratio}};
-    const expense = {{$expense_ratio}};
-    const ratio = (expense / income) * 100;
-    const ctx = document.getElementById('ratioChart').getContext('2d');
+        const income = {{ $income_ratio }};
+        const expense = {{ $expense_ratio }};
+        const ratio = (expense / income) * 100;
+        const ctx = document.getElementById('ratioChart').getContext('2d');
 
-    const ratioChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Income', 'Expense'],
-            datasets: [{
-                label: 'Income vs Expense Ratio',
-                data: [income, expense],
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.2)', 
-                    'rgba(255, 99, 132, 0.2)' 
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            title: {
-                display: true,
-                text: 'Income vs Expense Ratio'
+        const ratioChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Income', 'Expense'],
+                datasets: [{
+                    label: 'Income vs Expense Ratio',
+                    data: [income, expense],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Income vs Expense Ratio'
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
+
 </body>
 
 </html>

@@ -31,6 +31,8 @@ class DashboardController extends Controller
         $income_ratio = $this->TotalIncomeRation();
         $expense_ratio = $this->TotalExpenseRatio();
 
+
+
         return view('welcome', compact('todayIncome', 
         'weeklyIncome', 
         'monthlyIncomes', 
@@ -40,7 +42,8 @@ class DashboardController extends Controller
         'monthlyExpense',
         'yearlyExpense',
         'income_ratio',
-        'expense_ratio'));
+        'expense_ratio'
+        ));
     }
 
 
@@ -132,6 +135,17 @@ class DashboardController extends Controller
 
     }
 
-    
+    public function CategorizedData(){
+           $incomeCategory = DB::table('inc_record')->get(['description', 'price']);
+    $expenseCategory = DB::table('exp_record')->get(['description', 'price']);
+    return view('stats', ['incomeStats' => $incomeCategory, 'expenseStats' => $expenseCategory]);
+
+    }
+
+    // public function CategorizedExpense(){
+    //     $Expcategory = DB::table('exp_record')->get(['description', 'price']);
+    //     return view('stats',['Expstats'=>$Expcategory]);
+    // }
+
 
 }
