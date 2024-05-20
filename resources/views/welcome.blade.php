@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+    @extends('app')
+    @section('content')
 
-    <!-- Fonts -->
-    {{-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet"> --}}
+    <section class="container summary-display">
 
-    @include('navbar')
-</head>
-
-<body>
-    <h1 class="text-center mt-3 p-0">Income Overview</h1>
+    <h1 class="text-center">Income Overview</h1>
+    <hr style="color: rgb(0, 89, 131)">
     <section class="dashboard-income p-3 d-flex justify-content-center flex-wrap">
 
-        {{-- Todays Income --}}
-        <div class="card mb-3" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Today's Income: <h5 style="color: green">
                         {{ $todayIncome ? $todayIncome->sum('price') : '0.00' }} &#8377; </h5>
@@ -28,18 +17,17 @@
                 <p class="card-text">Details:</p>
                 <ul class="list-group">
                     @forelse($todayIncome as $income)
-                        <li class="list-group-item">{{ $income->description }}: {{ number_format($income->price, 2) }}
+                        <li class="list-group-item glassmorphism mt-2">{{ $income->description }}: {{ number_format($income->price, 2) }}
                             &#8377;</li>
                     @empty
-                        <li class="list-group-item">No Income for Today</li>
+                        <li class="list-group-item glassmorphism">No Income for Today</li>
                     @endforelse
                 </ul>
             </div>
         </div>
 
 
-        {{-- Weekly Income  --}}
-        <div class="card mb-3 ms-2" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3 ms-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Last 7 Days Income: <h5 style="color: green">
                         {{ $weeklyIncome ? $weeklyIncome->sum('price') : '0.00' }} &#8377; </h5>
@@ -47,7 +35,7 @@
                 <p class="card-text">Details:</p>
                 <ul class="list-group">
                     @for ($i = 0; $i < min(count($weeklyIncome), 2); $i++)
-                        <li class="list-group-item">{{ $weeklyIncome[$i]->description }}:
+                        <li class="list-group-item glassmorphism mt-2">{{ $weeklyIncome[$i]->description }}:
                             {{ number_format($weeklyIncome[$i]->price, 2) }} &#8377;</li>
                     @endfor
                     @if (count($weeklyIncome) > 2)
@@ -58,8 +46,7 @@
         </div>
 
 
-        {{-- Monthly Income  --}}
-        <div class="card mb-3 ms-2" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3 ms-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Last 30 Days Income: <h5 style="color: green">
                         {{ $monthlyIncomes ? $monthlyIncomes->sum('price') : '0.00' }} &#8377; </h5>
@@ -67,7 +54,7 @@
                 <p>Details:</p>
                 <ul class="list-group">
                     @for ($i = 0; $i < min(count($monthlyIncomes), 2); $i++)
-                        <li class="list-group-item">{{ $monthlyIncomes[$i]->description }}:
+                        <li class="list-group-item glassmorphism mt-2">{{ $monthlyIncomes[$i]->description }}:
                             {{ number_format($monthlyIncomes[$i]->price, 2) }} &#8377;</li>
                     @endfor
                     @if (count($monthlyIncomes) > 2)
@@ -77,8 +64,7 @@
             </div>
         </div>
 
-        {{-- Yearly Income  --}}
-        <div class="card mb-3 ms-2" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3 ms-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Yearly Income: <h5 style="color: green">
                         {{ $yearlyIncome ? $yearlyIncome->sum('price') : '0.00' }} &#8377; </h5>
@@ -86,7 +72,7 @@
                 <p>Details:</p>
                 <ul class="list-group">
                     @for ($i = 0; $i < min(count($yearlyIncome), 2); $i++)
-                        <li class="list-group-item">{{ $yearlyIncome[$i]->description }}:
+                        <li class="list-group-item glassmorphism mt-2">{{ $yearlyIncome[$i]->description }}:
                             {{ number_format($yearlyIncome[$i]->price, 2) }} &#8377;</li>
                     @endfor
                     @if (count($yearlyIncome) > 2)
@@ -96,14 +82,18 @@
             </div>
         </div>
     </section>
+        </section>
 
-    <h1 class="text-center m-0 p-0">Expense Overview</h1>
+
+
+    <section class="container summary-display">
+    <h1 class="text-center">Expense Overview</h1>
+    <hr style="color: rgb(0, 89, 131)">
 
 
     <section class="dashboard-expense p-3 d-flex justify-content-center flex-wrap">
 
-        {{-- Todays Expense  --}}
-        <div class="card mb-3" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Today's Expense: <h5 style="color: rgb(198, 0, 0)">
                         {{ $todaysExpense ? $todaysExpense->sum('price') : '0.00' }} &#8377; </h5>
@@ -111,19 +101,18 @@
                 <p class="card-text">Details:</p>
                 <ul class="list-group">
                     @forelse($todaysExpense as $expense)
-                        <li class="list-group-item">{{ $expense->description }}:
+                        <li class="list-group-item glassmorphism mt-2">{{ $expense->description }}:
                             {{ number_format($expense->price, 2) }}
                             &#8377;</li>
                     @empty
-                        <li class="list-group-item">No Expense for Today</li>
+                        <li class="list-group-item glassmorphism">No Expense for Today</li>
                     @endforelse
                 </ul>
             </div>
         </div>
 
-        {{-- Weekly Expense  --}}
 
-        <div class="card mb-3 ms-2" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3 ms-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Last 7 Days Expense: <h5 style="color: rgb(198, 0, 0)">
                         {{ $weeklyExpense ? $weeklyExpense->sum('price') : '0.00' }} &#8377; </h5>
@@ -131,7 +120,7 @@
                 <p class="card-text">Details:</p>
                 <ul class="list-group">
                     @for ($i = 0; $i < min(count($weeklyExpense), 2); $i++)
-                        <li class="list-group-item">{{ $weeklyExpense[$i]->description }}:
+                        <li class="list-group-item glassmorphism mt-2">{{ $weeklyExpense[$i]->description }}:
                             {{ number_format($weeklyExpense[$i]->price, 2) }} &#8377;</li>
                     @endfor
                     @if (count($weeklyExpense) > 2)
@@ -141,8 +130,7 @@
             </div>
         </div>
 
-        {{-- Monthly Expense  --}}
-        <div class="card mb-3 ms-2" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3 ms-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Last 30 Days Expense: <h5 style="color:rgb(198, 0, 0)">
                         {{ $monthlyExpense ? $monthlyExpense->sum('price') : '0.00' }} &#8377; </h5>
@@ -150,7 +138,7 @@
                 <p>Details:</p>
                 <ul class="list-group">
                     @for ($i = 0; $i < min(count($monthlyExpense), 2); $i++)
-                        <li class="list-group-item">{{ $monthlyExpense[$i]->description }}:
+                        <li class="list-group-item glassmorphism mt-2">{{ $monthlyExpense[$i]->description }}:
                             {{ number_format($monthlyExpense[$i]->price, 2) }} &#8377;</li>
                     @endfor
                     @if (count($monthlyExpense) > 2)
@@ -160,8 +148,7 @@
             </div>
         </div>
 
-        {{-- Yearly Expenses  --}}
-        <div class="card mb-3 ms-2" style="max-width: 18rem;">
+        <div class="card glassmorphism mb-3 ms-3" style="max-width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">Yearly Expenses: <h5 style="color: rgb(198, 0, 0)">
                         {{ $yearlyExpense ? $yearlyExpense->sum('price') : '0.00' }} &#8377; </h5>
@@ -169,7 +156,7 @@
                 <p>Details:</p>
                 <ul class="list-group">
                     @for ($i = 0; $i < min(count($yearlyExpense), 2); $i++)
-                        <li class="list-group-item">{{ $yearlyExpense[$i]->description }}:
+                        <li class="list-group-item glassmorphism mt-2">{{ $yearlyExpense[$i]->description }}:
                             {{ number_format($yearlyExpense[$i]->price, 2) }} &#8377;</li>
                     @endfor
                     @if (count($yearlyExpense) > 2)
@@ -179,9 +166,10 @@
             </div>
         </div>
     </section>
+</section>
 
 
-    {{-- Income and Expense Ratio  --}}
+
     <section class="container justify-content-center text-center mt-5" style="height: 70vh;">
         <div class="row">
             <div class="col">
@@ -195,8 +183,6 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
     <script>
         const income = {{ $income_ratio }};
         const expense = {{ $expense_ratio }};
@@ -206,7 +192,7 @@
         const ratioChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['Income', 'Expense'],
+                labels: ['Income ', 'Expense'],
                 datasets: [{
                     label: 'Income vs Expense Ratio',
                     data: [income, expense],
@@ -227,11 +213,10 @@
                 title: {
                     display: true,
                     text: 'Income vs Expense Ratio'
-                }
+                },
             }
         });
-    </script>
+    </script> 
 
-</body>
+    @endsection
 
-</html>

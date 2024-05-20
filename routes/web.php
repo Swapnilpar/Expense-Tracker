@@ -25,17 +25,17 @@ Route::get('/stats', [DashboardController::class, 'CategorizedData']);
 // Route::get('/visual', [DashboardController::class, 'CategorizedIncome']);
 
 
-Route::get('/expense',[ExpenseController::class, 'index']);
-Route::post('/expense',[ExpenseController::class, 'ExpData']);
-Route::get('/expense', [ExpenseController::class, 'showexpRecord']);
-Route::get('/expense/{id}', [ExpenseController::class, 'delExpRecord']);
-Route::put('/expense/update/{id}', [ExpenseController::class, 'ExpenseUpdate']);
+Route::get('/expense',[ExpenseController::class, 'index'])->name('expense-page');
+Route::post('/expense',[ExpenseController::class, 'ExpData'])->name('expense-post');
+// Route::get('/expense', [ExpenseController::class, 'showexpRecord'])->name('expense-get');
+// Route::get('/expense/{id}', [ExpenseController::class, 'delExpRecord'])->name('expense-del');
+// Route::put('/expense/update/{id}', [ExpenseController::class, 'ExpenseUpdate'])->name('expense-update');
 
 
+Route::get('/income',[IncomeController::class, 'index'])->name('income-page');
+Route::post('/income',[IncomeController::class, 'IncData'])->name('income-post');
+Route::get('/income', [IncomeController::class, 'showincRecord'])->name('income-get');
+Route::get('/income/{id}', [IncomeController::class, 'delIncRecord'])->name('income-del');
+Route::put('/income/update/{id}', [IncomeController::class, 'IncomeUpdate'])->name('income-update');
 
-Route::get('/income',[IncomeController::class, 'index']);
-Route::post('/income',[IncomeController::class, 'IncData']);
-Route::get('/income', [IncomeController::class, 'showincRecord']);
-Route::get('/income/{id}', [IncomeController::class, 'delIncRecord']);
-Route::put('/income/update/{id}', [IncomeController::class, 'IncomeUpdate']);
 // Route::post('/income/filter', [IncomeController::class, 'filterByDate']);

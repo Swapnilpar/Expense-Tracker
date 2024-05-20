@@ -1,7 +1,9 @@
-@include('navbar')
+@extends('app')
 
 
-<div class="container mt-5">
+
+@section('content')
+    <div class="container mt-5">
     <h1 class="text-center mb-4">Track your Expenses here.</h1>
 
     @if (Session::get('success'))
@@ -19,7 +21,7 @@
     <div class="row  mb-3">
         <div class="col-12 col-md-6 ">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addExpenseModal">Add
-                Expense</button>
+                Expense Source</button>
         </div>
     </div>
     <div class="row">
@@ -28,12 +30,13 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            {{-- <th scope="col">Select</th> --}}
                             <th scope="col">ID</th>
                             <th scope="col">Expense Description</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Actions</th>
+                            <th scope="col">Delete Data</th>
+                            <th scope="col">Update Data</th>
+
                         </tr>
                     </thead>
                     <tbody id="expenseTableBody">
@@ -101,4 +104,7 @@
         </div>
     </div>
 </div>
+
+
+@endsection
 
