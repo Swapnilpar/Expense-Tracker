@@ -56,7 +56,7 @@
                                             @csrf
                                             <input type="hidden" name="_method" value="PUT">
                                             <input type="text" name="description" class="form-control" value="{{$item->description}}" required>
-                                            <input type="number" name="price" class="form-control mt-2" value="{{$item->price}}" required>
+                                            <input type="number" name="price" class="form-control mt-2"  step=0.01 value="{{$item->price}}" required>
                                             <input type="date" name="date" class="form-control mt-2" value="{{$item->date}}" required>
                                             <button type="submit" class="btn btn-sm btn-primary mt-2">Update</button>
                                         </form>
@@ -70,6 +70,7 @@
 
                         @endisset
                     </tbody>
+                    {{$expdata->links()}}
                 </table>
             </div>
         </div>
@@ -92,7 +93,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Enter Price in Rupees</label>
-                        <input type="number" name="price" class="form-control" id="price" required>
+                        <input type="number" name="price" class="form-control" id="price" step=0.01 required>
                     </div>
                     <div class="mb-3">
                         <label for="date" class="form-label">Enter Date</label>

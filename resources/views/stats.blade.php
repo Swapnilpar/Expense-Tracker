@@ -1,4 +1,4 @@
-@include('navbar')
+{{-- @include('navbar')
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -89,4 +89,4 @@
             }
         }
     });
-</script>
+</script> --}}

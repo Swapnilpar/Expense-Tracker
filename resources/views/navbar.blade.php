@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     <title>
         @section('title')
@@ -42,6 +44,7 @@
         .summary-display{
             background-color: #ffffff79;
             margin-top: 28px;
+            margin-bottom: 28px;
             padding-top: 12px;
             border-radius: 16px
         }
@@ -58,8 +61,12 @@
     transform: scale(1.10); 
 }
 
-   
-    </style>
+
+    .ratio-container{
+        border-radius: 16px;
+        background-color: #ffffff79;
+    }
+</style>
 
 
 </head>
@@ -87,9 +94,9 @@
                         <li class="nav-item">
                             <a class="nav-link ps-3" href="expense">Expense Tracker</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link ps-3" href="expense"></a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>

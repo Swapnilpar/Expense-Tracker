@@ -18,7 +18,7 @@ class IncomeController extends Controller
 
      public function showincRecord()
     {
-        $data = Income::all();
+        $data = Income::paginate(10);
         return view('income', ['data' => $data]);
     }
 
@@ -35,17 +35,13 @@ class IncomeController extends Controller
         } else {
             return back()->with('error', 'Something went wrong!');
         }
+        
     }
 
     public function delIncRecord($id)
     {
-        $income = Income::find($id);
-        if ($income) {
-            $income->delete();
-            return redirect('income')->with('success', "Data Successfully Deleted");
-        } else {
-            return redirect('income')->with('error', "Data not found");
-        }
+        $income = Income::destroy($id);
+        return redirect('income')->with('success', "Data Successfully Deleted");
     }
 
      public function IncomeUpdate(Request $request, $id) {

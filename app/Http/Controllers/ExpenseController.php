@@ -17,8 +17,7 @@ class ExpenseController extends Controller
 
     public function showexpRecord()
     {
-        // return DB::table('exp_record')->get();
-        $data = Expense::all();
+        $data = Expense::paginate(10);
         return view('expense',['expdata'=>$data]);
     }
 
@@ -28,14 +27,12 @@ class ExpenseController extends Controller
         //     'exp_price'=>'required',
         //     'exp_date'=>'required'
         // ]);
-        
-        $query = DB::table('exp_record')->insert([
-            'description'=>$request->input('description'),
-            'price'=>$request->input('price'),
-            'date'=>$request->input('date')            
-        ]);
-
-        if($query){
+        $query = new Expense();
+            $query->description = $request->input('description');
+            $query->price = $request->input('price');
+            $query->date = $request->input('date');
+            $query->save();
+        if($query->id){
             return back()->with('success', 'Expense Added successfully');
         }
         else{
@@ -45,22 +42,21 @@ class ExpenseController extends Controller
 
     
     public function delExpRecord($id){
-        DB::delete('delete from exp_record where id = ?', [$id]);
-        return redirect('expense')->with('success', "Data Successfully Deleted");
+        $delrecord = Expense::destroy($id);
+        return back()->with('success', 'Expense Deleted successfully');
+
     }
 
    public function ExpenseUpdate(Request $request, $id) {
-        $query = DB::table('exp_record')
-            ->where('id', $id)
-            ->update([
-                'description' => $request->input('description'),
-                'price' => $request->input('price'),
-                'date' => $request->input('date')
-            ]);
-
-        if ($query) {
+        $query = Expense::find($id);
+        if($query){
+            $query->description = $request->input('description');
+            $query->price = $request->input('price');
+            $query->date = $request->input('date');
+            $query->save();
             return Redirect::to('/expense')->with('success', 'Expense data updated successfully!');
-        } else {
+        }
+        else {
             return Redirect::back()->with('error', 'Failed to update expense data.');
         }
     }
