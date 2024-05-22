@@ -21,8 +21,6 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-
         body{
             font-family: 'poppins';
             color: #202020;
@@ -30,43 +28,19 @@
             animation: flowGradient 11s infinite linear;
         }
 
-    @keyframes flowGradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-        .summary-display{
-            background-color: #ffffff79;
-            margin-top: 28px;
-            margin-bottom: 28px;
-            padding-top: 12px;
-            border-radius: 16px
+        @keyframes flowGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        .glassmorphism {
-    background-color: rgba(255, 255, 255, 0.377); 
-    border-radius: 10px; 
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    transition: all 0.2s ease; 
-}
-
-.glassmorphism:hover {
-
-    transform: scale(1.10); 
-}
-
-
-    .ratio-container{
-        border-radius: 16px;
-        background-color: #ffffff79;
-    }
-</style>
+    </style>
 
 
 </head>
@@ -74,7 +48,7 @@
 <body>
         
         <nav class="navbar  navbar-expand-lg bg-body-tertiary rounded">
-            <div class="container border-primary">
+            <div class="container nav-cont border-primary">
                 <a class="navbar-brand" href="#">
                     <img src="https://e7.pngegg.com/pngimages/417/38/png-clipart-expense-management-finance-budget-android-personal-finance-sign-thumbnail.png" width="30" height="30" class="d-inline-block align-top" alt="">
                     MoneyMinder
@@ -94,9 +68,9 @@
                         <li class="nav-item">
                             <a class="nav-link ps-3" href="expense">Expense Tracker</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link ps-3" href="expense"></a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link ps-3" href="budget">Budget Tracking</a>
+                        </li>
                     </ul>
                 </div>
             </div>

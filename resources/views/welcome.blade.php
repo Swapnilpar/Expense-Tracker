@@ -3,6 +3,39 @@
     @extends('app')
     @section('content')
 
+
+    {{-- Style section of welcome page  --}}
+    <style>
+        .summary-display{
+            background-color: #ffffff79;
+            margin-top: 28px;
+            margin-bottom: 28px;
+            padding-top: 12px;
+            border-radius: 16px
+        }
+
+        .glassmorphism {
+            background-color: rgba(255, 255, 255, 0.377); 
+            border-radius: 10px; 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            transition: all 0.2s ease; 
+        }
+
+        .glassmorphism:hover {
+
+            transform: scale(1.10); 
+        }
+            .ratio-container{
+                border-radius: 16px;
+                background-color: #ffffff79;
+            }
+    </style>
+
+
+
+
+
+    <body id="WelcomeBody">
     <section class="container summary-display">
 
     <h1 class="text-center">Income Overview</h1>
@@ -169,7 +202,7 @@
 </section>
 
 
-
+{{-- 
     <section class="container justify-content-center text-center mt-5 p-4 ratio-container" style="height: 70vh;">
         <div class="row">
             <div class="col">
@@ -314,8 +347,9 @@
                 },
             }
         });
-    </script> 
+    </script>  --}}
 
+    </body>
 
 
     @endsection

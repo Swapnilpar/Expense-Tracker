@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BudgetController;
+
 
 
 /*
@@ -18,8 +20,14 @@ use App\Http\Controllers\DashboardController;
 */
 
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [DashboardController::class, 'index'])->name('Dashboard');
 // Route::get('/', [DashboardController::class, 'CategorizedData']);
+Route::get('/budget', [BudgetController::class, 'index'])->name('BudgetGet');
+Route::post('/budget', [BudgetController::class, 'PostBudget'])->name('PostBudget');
+Route::get('/budget', [BudgetController::class, 'AmountLeft'])->name('AmountLeft');
+Route::get('/budget', [BudgetController::class, 'BudgetStatus'])->name('BudgetStatus');
+
+
 
 
 
@@ -31,6 +39,7 @@ Route::post('/expense',[ExpenseController::class, 'ExpData'])->name('expense-pos
 Route::get('/expense', [ExpenseController::class, 'showexpRecord'])->name('expense-get');
 Route::get('/expense/{id}', [ExpenseController::class, 'delExpRecord'])->name('expense-del');
 Route::put('/expense/update/{id}', [ExpenseController::class, 'ExpenseUpdate'])->name('expense-update');
+
 
 
 Route::get('/income',[IncomeController::class, 'index'])->name('income-page');
