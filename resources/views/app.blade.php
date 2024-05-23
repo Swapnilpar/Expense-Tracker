@@ -12,9 +12,11 @@
 <body>
     @include('navbar')
 
+    
     <div class="content">
         @yield('content')
     </div>
+
 
     @include('footer')
     

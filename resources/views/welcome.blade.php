@@ -29,6 +29,10 @@
                 border-radius: 16px;
                 background-color: #ffffff79;
             }
+
+        .ratio-container{
+            border-radius: 16px;
+        }
     </style>
 
 
@@ -78,8 +82,7 @@
             </div>
         </div>
 
-
-       <div class="card glassmorphism mb-3 ms-2" style="max-width: 14rem;">
+        <div class="card glassmorphism mb-3 ms-2" style="max-width: 14rem;">
             <div class="card-body">
                 <h6 class="card-title">Last 30 Days Income: <h5 style="color: green">
                         {{ $monthlyIncomes ? $monthlyIncomes->sum('price') : '0.00' }} &#8377; </h5>
@@ -201,34 +204,41 @@
     </section>
 </section>
 
-
 {{-- 
-    <section class="container justify-content-center text-center mt-5 p-4 ratio-container" style="height: 70vh;">
-        <div class="row">
-            <div class="col">
-                <h1 class="mb-4">Income Expense Ratio</h1>
-            </div>
+<section class="container justify-content-center text-center mt-5 p-4 ratio-container" style="height: 70vh;">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4">Income Expense Ratio</h1>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <canvas id="ratioChart"></canvas>
-            </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <canvas id="ratioChart"></canvas>
         </div>
-    </section>
+    </div>
+</section> --}}
 
 
+ 
     
-    @if(isset($categorizedData))
-    <section class="container justify-content-center text-center mt-5 bg-light ratio-container rounded" style="height: 70vh;">
-            <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-8 col-sm-12">
-            <h1 class="text-center mb-4">Categorized Income Chart</h1>
+   @if(@isset($incomeCategory,$expenseCategory))
+
+       <section class="container justify-content-center text-center p-4 my-5 ratio-container" style="height: 70vh;">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <h3 class="text-center mb-4">Categorized Income Chart</h3>
             <div class="chart-container">
                 <canvas id="categorizedIncomeChart"></canvas>
             </div>
         </div>
-        <div class="col-lg-5 col-md-8 col-sm-12">
-            <h1 class="text-center mb-4">Categorized Expense Chart</h1>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <h3 class="text-center mb-4">Income Expense Ratio</h3>
+            <div class="chart-container">
+                <canvas id="ratioChart"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <h3 class="text-center mb-4">Categorized Expense Chart</h3>
             <div class="chart-container">
                 <canvas id="categorizedExpenseChart"></canvas>
             </div>
@@ -236,10 +246,12 @@
     </div>
 </section>
 
+
 <script>
+
     // Income Chart
 
-    const incomeData = @json($incomeStats);
+    const incomeData = @json($incomeCategory);
     const incomeDescriptions = incomeData.map(item => item.description);
     const incomePrices = incomeData.map(item => item.price);
 
@@ -274,7 +286,7 @@
     });
 
     // Expense Chart
-    const expenseData = @json($expenseStats);
+    const expenseData = @json($expenseCategory);
     const expenseDescriptions = expenseData.map(item => item.description);
     const expensePrices = expenseData.map(item => item.price);
 
@@ -308,13 +320,13 @@
         }
     });
 </script>
-
 @else
-    <p>No income data available</p>
-@endif
+    <h4>No Income and Expense data available</h4>
+@endisset
 
 
-    <script>
+
+     <script>
         const income = {{ $income_ratio }};
         const expense = {{ $expense_ratio }};
         const ratio = (expense / income) * 100;
@@ -347,7 +359,7 @@
                 },
             }
         });
-    </script>  --}}
+    </script>  
 
     </body>
 

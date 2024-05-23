@@ -11,7 +11,7 @@
                     <li><a href="/" class="text-white">Dashboard</a></li>
                     <li><a href="/income" class="text-white">Income </a></li>
                     <li><a href="/expense" class="text-white">Expense </a></li>
-                    <li><a href="#" class="text-white">Budgets Tracking</a></li>
+                    <li><a href="/budget" class="text-white">Budgets Tracking</a></li>
                 </ul>
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mt-3">
@@ -19,7 +19,7 @@
                 <ul class="list-unstyled ">
                     <li><a href="#" class="text-white">Support</a></li>
                     <li><a href="#" class="text-white">FAQs</a></li>
-                    <li><a href="#" class="text-white">Blog</a></li>
+                    <li><a href="https://www.fool.com/the-ascent/personal-finance/best-personal-finance-blogs/" class="text-white" target="_blank">Blog</a></li>
                     <li><a href="#" class="text-white">Terms</a></li>
                 </ul>
             </div>

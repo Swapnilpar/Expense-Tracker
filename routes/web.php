@@ -22,10 +22,14 @@ use App\Http\Controllers\BudgetController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('Dashboard');
 // Route::get('/', [DashboardController::class, 'CategorizedData']);
+
+
 Route::get('/budget', [BudgetController::class, 'index'])->name('BudgetGet');
 Route::post('/budget', [BudgetController::class, 'PostBudget'])->name('PostBudget');
-Route::get('/budget', [BudgetController::class, 'AmountLeft'])->name('AmountLeft');
-Route::get('/budget', [BudgetController::class, 'BudgetStatus'])->name('BudgetStatus');
+// Route::get('/budget', [BudgetController::class, 'index'])->name('BudgetGet');
+// Route::post('/budget', [BudgetController::class, 'PostBudget'])->name('PostBudget');
+// Route::get('/budget', [BudgetController::class, 'AmountLeft'])->name('AmountLeft');
+// Route::get('/budget', [BudgetController::class, 'BudgetStatus'])->name('BudgetStatus');
 
 
 

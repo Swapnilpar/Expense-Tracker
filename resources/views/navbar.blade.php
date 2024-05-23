@@ -49,7 +49,7 @@
         
         <nav class="navbar  navbar-expand-lg bg-body-tertiary rounded">
             <div class="container nav-cont border-primary">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="https://e7.pngegg.com/pngimages/417/38/png-clipart-expense-management-finance-budget-android-personal-finance-sign-thumbnail.png" width="30" height="30" class="d-inline-block align-top" alt="">
                     MoneyMinder
                 </a>                

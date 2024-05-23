@@ -15,7 +15,11 @@ class DashboardController extends Controller
 {
     public function index()
     {
-    //    $categorizedData = $this->CategorizedData();
+        
+    $incomeCategory = Income::get(['description', 'price']);
+    $expenseCategory = Expense::get(['description', 'price']);
+        
+    // $categorizedData = $this->CategorizedData();
 
     // Income Displaying
     $todayIncome = $this->TodaysIncome();
@@ -30,12 +34,12 @@ class DashboardController extends Controller
     $yearlyExpense = $this->YearlyExpense();
 
     // Ratio Displaying
-    // $income_ratio = $this->TotalIncomeRation();
-    // $expense_ratio = $this->TotalExpenseRatio();
+    $income_ratio = $this->TotalIncomeRation();
+    $expense_ratio = $this->TotalExpenseRatio();
+    
 
     // Return the view with all the data
     return view('welcome', compact(
-        // 'categorizedData',
         'todayIncome',
         'weeklyIncome',
         'monthlyIncomes',
@@ -43,9 +47,11 @@ class DashboardController extends Controller
         'todaysExpense',
         'weeklyExpense',
         'monthlyExpense',
-        'yearlyExpense'
-        // 'income_ratio',
-        // 'expense_ratio'
+        'yearlyExpense',
+        'income_ratio',
+        'expense_ratio',
+        'incomeCategory',
+        'expenseCategory'
     ));
     }
 
@@ -119,31 +125,25 @@ public function TodaysIncome()
 
     // // Visualization of the Data
 
-    // public function TotalIncomeRation(){
-    //     $totalIncome = Income::sum('price');
-    //     return $totalIncome;
-    // }
+    public function TotalIncomeRation(){
+        $totalIncome = Income::sum('price');
+        return $totalIncome;
+    }
 
-    // public function TotalExpenseRatio(){
-    //     $totalExpense = Expense::sum('price');
-    //     return $totalExpense;
-    // }
+    public function TotalExpenseRatio(){
+        $totalExpense = Expense::sum('price');
+        return $totalExpense;
+    }
 
 
     // public function CategorizedData(){
-    // $incomeCategory = Income::get(['description', 'price']);
-    // $expenseCategory = Expense::get(['description', 'price']);
-    // return  ['incomeStats' => $incomeCategory, 'expenseStats' => $expenseCategory];
+   
     // }
 
-    // public function CategorizeIncome(){
-        
-    // }
 
-    // public function CategorizedExpense(){
-    //     $Expcategory = DB::table('exp_record')->get(['description', 'price']);
-    //     return view('stats',['Expstats'=>$Expcategory]);
-    // }
 
+
+
+    
 
 }
