@@ -34,8 +34,8 @@
                             <th scope="col">Expense Description</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Delete Data</th>
-                            <th scope="col">Update Data</th>
+                            <th scope="col">Actions</th>
+                            {{-- <th scope="col">Update Data</th> --}}
 
                         </tr>
                     </thead>
@@ -47,11 +47,54 @@
                                     <td>{{ $item->description }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->date }}</td>
-                                    <td>
-                                        <a href="/expense/{{ $item->id }}" class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
-                                    </td>
-                                      <td>
+                                     <td>
+                                                <a href="/expense/{{ $item->id }}" class="btn btn-md btn-danger"
+                                                    onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal{{ $item->id }}">Update</button>
+                                                <div class="modal fade" id="exampleModal{{ $item->id }}" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel{{ $item->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="exampleModalLabel{{ $item->id }}">Update Expense
+                                                                </h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/expense/update/{{ $item->id }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" name="_method" value="PUT">
+                                                                    <div class="form-group">
+                                                                        <label for="description">Description</label>
+                                                                        <input type="text" name="description"
+                                                                            class="form-control"
+                                                                            value="{{ $item->description }}" required>
+                                                                    </div>
+                                                                    <div class="form-group mt-2">
+                                                                        <label for="price">Price</label>
+                                                                        <input type="number" name="price"
+                                                                            class="form-control" step="0.01"
+                                                                            value="{{ $item->price }}" required>
+                                                                    </div>
+                                                                    <div class="form-group mt-2">
+                                                                        <label for="date">Date</label>
+                                                                        <input type="date" name="date"
+                                                                            class="form-control" value="{{ $item->date }}"
+                                                                            required>
+                                                                    </div>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary mt-2">Update</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                      {{-- <td>
                                         <form action="/expense/update/{{$item->id}}" method="POST">
                                             @csrf
                                             <input type="hidden" name="_method" value="PUT">
@@ -60,7 +103,7 @@
                                             <input type="date" name="date" class="form-control mt-2" value="{{$item->date}}" required>
                                             <button type="submit" class="btn btn-sm btn-primary mt-2">Update</button>
                                         </form>
-                                      </td>
+                                      </td> --}}
                                 </tr>
                             @endforeach
                         @else

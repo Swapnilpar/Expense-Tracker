@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Redirect;
 
 class BudgetController extends Controller
 {
+
+    // budget displaying function 
     public function index(){
         $budget = Budget::latest()->first();
         $expenses = collect();
@@ -43,6 +45,9 @@ class BudgetController extends Controller
         return view('budget', compact('expenses', 'AmountRemaining', 'budgetAmount', 'alertMessage', 'sumofexpenses'));
          }
 
+
+
+    // budget setup function 
     public function PostBudget(Request $request){
         $query = new Budget();
             $query->startDate = $request->input('startDate');
